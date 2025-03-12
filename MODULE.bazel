@@ -1,0 +1,4 @@
+"""Toolchains for using scinc with Bazel."""
+
+bazel_deps("rules_sci", "0.1.0")
+bazel_deps("bazel_skylib", "1.0.0")

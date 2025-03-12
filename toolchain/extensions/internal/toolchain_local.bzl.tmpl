@@ -1,0 +1,23 @@
+"""Generated toolchain.bzl file for scinc local"""
+
+load("@rules_sci://sci/toolchains:toolchain.bzl", "SciToolchainInfo")
+load("@rules_sci://sci:sci.bzl", "SciSystemInfo")
+
+_scinc_local_toolchain_impl(ctx):
+  return [SciToolchainInfo(
+    scic = ctx.executables._compiler,
+    systems = [
+      {{SYSTEMS_LIST}}
+    ]
+  )]
+
+scinc_local_toolchain = rule(
+  _scinc_local_toolchain_impl,
+  attrs = {
+    "_compiler": attr.label(
+      executable = True,
+      default = Label(":scinc"),
+      cfg = "exec"
+    )
+  }
+)

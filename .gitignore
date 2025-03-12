@@ -1,0 +1,5 @@
+# Bazel build directories
+/bazel-*
+
+# As a non-root module, we don't need to keep the lock file around.
+/MODULE.bazel.lock
