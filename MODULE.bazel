@@ -1,4 +1,21 @@
 """Toolchains for using scinc with Bazel."""
 
-bazel_deps("rules_sci", "0.1.0")
-bazel_deps("bazel_skylib", "1.0.0")
+bazel_dep(name = "rules_sci", version = "0.1.0")
+bazel_dep(name = "bazel_skylib", version = "1.7.1")
+
+local_path_override(
+  module_name = "rules_sci",
+  path = "../rules_sci",
+)
+
+scinc_local = use_extension(
+  "//toolchain/extensions:local.bzl",
+  "scinc_local",
+  dev_dependency = True
+)
+
+use_repo(scinc_local, "scinc_local")
+
+register_toolchains(
+  "@scinc_local//:scinc_local_toolchain",
+)

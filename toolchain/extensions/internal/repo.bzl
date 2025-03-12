@@ -37,7 +37,7 @@ def _scinc_local_path_impl(ctx):
       target_vm = "1.1",
       defines = [
         "SCI_1_1",
-      ]
+      ],
       inc_path = paths.join(home_path, "lib/sci_1_1"),
     )
   ]
@@ -50,10 +50,12 @@ def _scinc_local_path_impl(ctx):
   system_defs = [
     _SYSTEM_DEF.format(
       target_vm = system_lib.target_vm,
-      defines = ", ".join(system_lib.defines),
+      defines = ", ".join([
+        '"{define}"'.format(define = define)
+        for define in system_lib.defines]),
       inc_path = system_lib.inc_path,
     )
-    for system_lib in system_lib_paths
+    for system_lib in system_libs
   ]
 
   ctx.template(
@@ -76,7 +78,6 @@ scinc_local_path_repo = repository_rule(
   _scinc_local_path_impl,
   attrs = {
     "scinc_home": attr.string(
-      allow_empty = False,
       mandatory = True,
       doc = "Path to the scinc home directory.",
     ),
