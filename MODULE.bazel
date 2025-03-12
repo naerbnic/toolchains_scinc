@@ -1,5 +1,9 @@
 """Toolchains for using scinc with Bazel."""
 
+module(
+    name = "toolchains_scinc",
+)
+
 bazel_dep(name = "rules_sci", version = "0.1.0")
 bazel_dep(name = "bazel_skylib", version = "1.7.1")
 
