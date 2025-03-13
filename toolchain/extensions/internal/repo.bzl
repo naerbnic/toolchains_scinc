@@ -24,8 +24,9 @@ _SYSTEM_DEF = '''
     defines = [
       {defines}
     ],
-    inc_path = "{inc_path}",
-    deps = []),
+    system_header_path = "{inc_path}/system.sh",
+    include_path = "{inc_path}",
+    dep_files = depset([])),
 '''
 
 def _scinc_local_path_impl(ctx):
@@ -38,7 +39,7 @@ def _scinc_local_path_impl(ctx):
       defines = [
         "SCI_1_1",
       ],
-      inc_path = paths.join(home_path, "lib/sci_1_1"),
+      inc_path = paths.join(home_path, "include/sci_1_1"),
     )
   ]
 

@@ -4,8 +4,8 @@ load("@rules_sci//sci/toolchains:toolchain.bzl", "SCIToolchainInfo")
 load("@rules_sci//sci:sci.bzl", "SciSystemInfo")
 
 def _scinc_local_toolchain_impl(ctx):
-  return [SCIToolchainInfo(
-    scic = ctx.executables._compiler,
+  return [platform_common.ToolchainInfo(
+    scic = ctx.executable._compiler,
     systems = [
       {{SYSTEMS_LIST}}
     ]
@@ -15,6 +15,7 @@ scinc_local_toolchain = rule(
   _scinc_local_toolchain_impl,
   attrs = {
     "_compiler": attr.label(
+      allow_files = True,
       executable = True,
       default = Label(":scinc"),
       cfg = "exec"
