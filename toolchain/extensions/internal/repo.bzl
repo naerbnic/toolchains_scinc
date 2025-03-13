@@ -14,7 +14,7 @@ scinc_local_toolchain(
 toolchain(
     name = "scinc_local_toolchain",
     toolchain = ":scinc_local",
-    toolchain_type = "@rules_sci//sci/toolchains:sci_toolchain_type",
+    toolchain_type = "@rules_sci//sci/toolchains:toolchain_type",
 )
 '''
 
@@ -59,8 +59,8 @@ def _scinc_local_path_impl(ctx):
   ]
 
   ctx.template(
-    path = "toolchain.bzl",
-    template = ":toolchain_local.bzl.tmpl",
+    "toolchain.bzl",
+    Label(":toolchain_local.bzl.tmpl"),
     substitutions = {
       "{{SYSTEMS_LIST}}": "\n".join(system_defs),
     },
@@ -68,7 +68,7 @@ def _scinc_local_path_impl(ctx):
   )
 
   ctx.file(
-    path = "BUILD.bazel",
+    "BUILD.bazel",
     content = _BUILD_FILE,
     executable = False,
   )
