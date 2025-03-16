@@ -14,7 +14,7 @@ load("//toolchain/extensions/internal:repo.bzl", "scinc_archive_repo")
 
 visibility("public")
 
-_LATEST_RELEASE = "0.0.1"
+_LATEST_RELEASE = "0.0.2"
 
 _RELEASES = {
   "0.0.1": dict(
@@ -29,6 +29,20 @@ _RELEASES = {
     macos = struct(
       url = "https://github.com/naerbnic/sci-compiler/releases/download/v0.0.1/scinc-macos-v0.0.1.tgz",
       sha256 = "a1b08634a0963ed74de2551b5d6381631d540f70c71d5548801cd7deaddb91f5",
+    )
+  ),
+  "0.0.2": dict(
+    windows = struct(
+      url = "https://github.com/naerbnic/sci-compiler/releases/download/v0.0.2/scinc-windows-v0.0.2.zip",
+      sha256 = "54082c6f136022f4f6cfc911775277f1a37a93287ffbf99424b91898d44c0f6e",
+    ),
+    linux = struct(
+      url = "https://github.com/naerbnic/sci-compiler/releases/download/v0.0.2/scinc-linux-v0.0.2.tgz",
+      sha256 = "d29e57bd3040285aa744aeb19b80babdb27c3af4e05842a95d260dfe15d342a9",
+    ),
+    macos = struct(
+      url = "https://github.com/naerbnic/sci-compiler/releases/download/v0.0.2/scinc-macos-v0.0.2.tgz",
+      sha256 = "8e6f895cee52b4fd45f93246f8a07ec1fca55369e04e65f3c3d6efd64fb628b1",
     )
   ),
 }
